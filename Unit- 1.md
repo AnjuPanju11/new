@@ -1,95 +1,127 @@
-🧠 UNIT 1: Relational Model, Relational Algebra & Database Design
+# UNIT 1: Relational Model, Relational Algebra & Database Design
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔹 Q1. What are the Three Levels of Abstraction in DBMS?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🧾 Definition:
+---
+
+## Q1. What are the Three Levels of Abstraction in DBMS?
+
+**Definition:**  
 Three levels define how data is viewed or stored in a database system.
 
-🔸 External Level – What the user sees  
-🔸 Conceptual Level – Logical structure of the whole database  
-🔸 Internal Level – How data is physically stored in files/indexes
+### 1. External Level
+- What the user sees (e.g., only names and marks)
 
-📦 Example:
-Library System  
-- External: Book Title  
-- Conceptual: Book(Title, Author, Price)  
-- Internal: Stored in disk blocks with index
+### 2. Conceptual Level
+- Logical structure of the full database (e.g., Student table with columns)
 
-💡 Trick: E-C-I (External → Conceptual → Internal)
+### 3. Internal Level
+- How data is physically stored (e.g., files, indexes)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔹 Q2. What is Tuple, Attribute, Key, and Schema?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔸 Tuple = A row (record) → (101, Ravi, Bhopal)  
-🔸 Attribute = A column → Name, Address  
-🔸 Key = Unique identifier → RollNo  
-🔸 Schema = Table structure → Student(RollNo, Name, City)
+**Example: Library System**
 
-💡 Trick: T-A-K-S = Tuple, Attribute, Key, Schema
+- External: Book title
+- Conceptual: Book(Title, Author, Price)
+- Internal: Stored in disk blocks with indexing
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔹 Q3. What is Normalization? With FD & MVD
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔸 Normalization = Process to remove data redundancy  
-🔸 FD (Functional Dependency): A → B (RollNo → Name)  
-🔸 MVD (Multivalued Dependency): A →→ B (Student →→ Phone)
+**Memory Tip:** E → C → I  
+(External → Conceptual → Internal)
 
-📦 Example:  
-Unnormalized: Ravi – DBMS, Java  
-Normalized:  
-- Ravi – DBMS  
-- Ravi – Java
+---
 
-💡 Steps: 1NF → 2NF → 3NF → BCNF
+## Q2. What is Tuple, Attribute, Key, and Schema?
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔹 Q4. Relational Algebra Operations
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-| Operation     | Symbol | Example                               | Purpose              |
-|---------------|--------|---------------------------------------|----------------------|
-| Selection     | σ      | σ(City='Bhopal')(Student)             | Filter rows          |
-| Projection    | π      | π(Name)(Student)                      | Select columns       |
-| Union         | ∪      | Student ∪ Alumni                      | Combine rows         |
-| Difference    | −      | Student − Alumni                      | Subtract rows        |
-| Cartesian Prod| ×      | Student × Course                      | Cross join           |
-| Join          | ⨝      | Student ⨝ Course using RollNo         | Merge matching rows  |
+| Term      | Meaning                          | Example                         |
+|-----------|----------------------------------|---------------------------------|
+| Tuple     | A row in a table                 | (101, Ravi, Bhopal)             |
+| Attribute | A column in a table              | RollNo, Name                    |
+| Key       | Uniquely identifies each record  | RollNo                          |
+| Schema    | Table structure definition       | Student(RollNo, Name, Address)  |
 
-💡 Tip: σ = row filter, π = column picker
+**Memory Tip:** T-A-K-S = Tuple, Attribute, Key, Schema
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔹 Q5. Relational Algebra Practical Queries
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ i) Find students from "New Delhi"  
-→ σ(Address = 'New Delhi')(Student)
+---
 
-✅ ii) Teachers who teach "DBMS"  
-→ σ(Subject = 'DBMS')(Teacher)
+## Q3. What is Normalization? With FD & MVD
 
-✅ iii) Insert new Teacher  
-→ SQL: INSERT INTO Teacher VALUES(501, 'Amit', 'Math');
+**Normalization:** Process of reducing data redundancy.
 
-✅ iv) Delete students from Mumbai  
-→ SQL: DELETE FROM Student WHERE Address = 'Mumbai';
+- **Functional Dependency (FD):** A → B (e.g., RollNo → Name)
+- **Multivalued Dependency (MVD):** A →→ B (e.g., Student →→ Phone)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔹 Q6. What is BCNF? Why is it better than 3NF?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔸 BCNF = Boyce-Codd Normal Form  
-🔸 Every determinant should be a candidate key  
-🔸 Removes all anomalies better than 3NF
+**Example:**
+Before Normalization:
+```
+Ravi – DBMS, Java
+```
+After Normalization:
+```
+Ravi – DBMS  
+Ravi – Java
+```
 
-📦 Example:  
-Table(StudentID, Course, Faculty)  
-- Faculty depends on Course, not StudentID → Not in BCNF
+**Steps in Normalization:**  
+1NF → 2NF → 3NF → BCNF
 
-💡 Advantage: Removes hidden dependencies
+---
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📝 SUMMARY TO REMEMBER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 E-C-I = 3 Abstraction Levels  
-📌 T-A-K-S = Tuple, Attribute, Key, Schema  
-📌 FDs & MVDs = Functional/Multivalued Dependencies  
-📌 σ, π, ∪, −, ×, ⨝ = Algebra Symbols  
-📌 BCNF = Best Normal Form with stricter rules
+## Q4. Relational Algebra Operations
+
+| Operation     | Symbol | Example                              | Purpose               |
+|---------------|--------|--------------------------------------|-----------------------|
+| Selection     | σ      | σ(City = 'Bhopal')(Student)          | Filter rows           |
+| Projection    | π      | π(Name)(Student)                     | Select columns        |
+| Union         | ∪      | Student ∪ Alumni                     | Combine rows          |
+| Set Difference| −      | Student − Alumni                     | Subtract common rows  |
+| Cartesian Prod| ×      | Student × Course                     | Cross join            |
+| Join          | ⨝      | Student ⨝ Course using RollNo        | Combine matching rows |
+
+**Quick Tip:**  
+- Use `σ` for filtering rows  
+- Use `π` for selecting columns
+
+---
+
+## Q5. Relational Algebra Queries
+
+**Given Tables:**
+- Student(RollNo, Name, Address)
+- Teacher(TeacherID, TeacherName, Subject)
+
+**Queries:**
+
+1. Students from "New Delhi":
+```
+σ(Address = 'New Delhi')(Student)
+```
+
+2. Teachers who teach "DBMS":
+```
+σ(Subject = 'DBMS')(Teacher)
+```
+
+3. Insert a new Teacher (in SQL):
+```sql
+INSERT INTO Teacher VALUES(501, 'Amit', 'Math');
+```
+
+4. Delete students from Mumbai (in SQL):
+```sql
+DELETE FROM Student WHERE Address = 'Mumbai';
+```
+
+---
+
+## Q6. What is BCNF? Why is it better than 3NF?
+
+**BCNF (Boyce-Codd Normal Form):**
+- A stronger version of 3NF
+- Every determinant must be a candidate key
+
+**Example:**
+```
+Table: (StudentID, Course, Faculty)
+Faculty depends on Course → Not in BCNF
+```
+
+**Why BCNF is better:**
+- Eliminates all types of redundancy
+- More consistent and cleaner schema
