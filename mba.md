@@ -1,252 +1,119 @@
- 
----
+🔵 Q1. OODBMS kya hota hai? (Object-Oriented Database)
+🧠 Simple Definition:
+OODBMS ek aisa database hai jisme data ko object ki tarah store karte hain — jaise programming me class-object banate hain (Java, C++, Python me).
 
-## 🔹 1. What is Entropy?
+💡 Samjho aise:
+Jaise ek product ho — uska naam, price, ID sab ek sath store karna hai.
+OODBMS me is poore object ko ek sath store karte hain, table me tod ke nahi.
 
-**Definition:**  
-Entropy measures the average information or uncertainty in a message.
+cpp
+Copy
+Edit
+class Product {
+  int id;
+  string name;
+  float price;
+}
+Yeh pura object direct database me store ho sakta hai.
 
-**Formula:**  
-H = – ∑ P(x) × log₂ P(x)
+⭐ Kya-kya support karta hai?
+Class & Object
 
-**Example:**  
-If you always get same reply from a friend (“Yes”), entropy is low. If reply changes often, entropy is high.
+Inheritance (jaise ek class dusri se cheeze le leti hai)
 
-**Trick:**  
-Entropy = Surprise level.  
-No surprise = low entropy, full guessing = high entropy.
+Polymorphism, Encapsulation
 
----
+Complex data: list, array, object ke andar object
 
-## 🔹 2. Shannon-Fano Coding (for M = 2, M = 3)
+📌 Kaha use hota hai?
+CAD design software (engineering)
 
-**Definition:**  
-It’s a coding technique where frequent symbols get shorter codes.
+Animation tools
 
-**Steps:**  
-1. Arrange symbols by decreasing probability  
-2. Divide into equal probability groups  
-3. Assign binary digits  
-4. Repeat until all symbols are coded
+Gaming aur Real-time simulations
 
-**Example:**  
-Texting: You use “k” for “okay” often (short code for frequent word).
+🔵 Q2. OODBMS ke Main Parts (Building Blocks)
+Term	Matlab kya hai? (Simple Language)
+Class	Ek design/blueprint — jaise ek recipe ka format
+Object	Class ka actual piece — jaise ek real product
+Attribute	Data field — jaise name, price
+Method	Function — jaise calculatePrice()
+Inheritance	Ek class dusri class ki properties le sakti hai
 
-**Trick:**  
-Frequent = short  
-Rare = long
+🔵 Q3. ORDBMS kya hota hai? (Object-Relational DBMS)
+🧠 Simple Definition:
+ORDBMS me table bhi hoti hain aur object wali features bhi.
+Matlab: Relational DB + thoda object wali power.
 
----
+💡 Samjho aise:
+Agar tu SQL use kar raha hai, lekin tujhe kuch complex cheeze store karni hain (jaise address, photo, custom types), to ORDBMS ka use karega.
 
-## 🔹 3. Redundancy and Uncertainty
+sql
+Copy
+Edit
+CREATE TYPE Address AS (
+  street TEXT,
+  city TEXT,
+  pincode TEXT
+);
+Yeh custom type ko SQL table me use kar sakte ho.
 
-**Definition:**  
-- Redundancy: Extra bits added for error detection  
-- Uncertainty: Not knowing what message comes next
+✅ Kaha use hota hai?
+Bank (Account details complex hoti hai)
 
-**Example:**  
-- Saying “Hello Hello” on a bad call = Redundancy  
-- Tossing coin = Uncertainty
+Logistic (shipment ke details)
 
-**Trick:**  
-Redundancy = Safety  
-Uncertainty = Guessing
+Healthcare (medical record structures)
 
----
+🔵 Q4. RDBMS vs OODBMS vs ORDBMS – Easy Comparison
+Feature	RDBMS	OODBMS	ORDBMS
+Data Format	Table (row-column)	Object (OOP jaisa)	Table + Object features
+OOP Support	❌ Nahi	✅ Full Support	⚠️ Thoda bahut
+Language	SQL	Java, C++, Python	SQL + Custom Object Support
+Kaha Use?	Business apps	CAD, Games, AI	Banking, Logistics, Hybrid
+Example	MySQL, Oracle	ObjectStore, db4o	PostgreSQL, Informix
 
-## 🔹 4. Find Entropy of Given Probabilities
+🔵 Q5. Mobile Database kya hota hai?
+🧠 Simple Definition:
+Mobile database aise database hote hain jo mobile me kaam karte hain — bina internet ke bhi.
 
-**Definition:**  
-Use entropy formula with given probabilities.
+📲 Khaas Baat:
+Offline kaam karta hai
 
-**Example:**  
-P = [1/2, 1/4, 1/8, 1/16, 1/32, 1/32]  
-Plug into formula to get H.
+Data device me hi save hota hai
 
-**Trick:**  
-More variation in P → more surprise → more entropy.
+Internet aate hi cloud ya main DB se sync ho jata hai
 
----
+Fast aur battery-efficient hota hai
 
-## 🔹 5. Bernoulli & Poisson Process
+✅ Example:
+Doctor tablet me patient details likh raha hai bina net ke.
+Later jab net aata hai, sab data hospital DB me chala jaata hai.
 
-**Definition:**  
-- Bernoulli: Binary outcomes (Success/Fail)  
-- Poisson: Random events in time (like number of calls per hour)
+🛠️ Technologies: SQLite, Firebase
 
-**Example:**  
-- Tossing coin = Bernoulli  
-- Cars passing in 1 hour = Poisson
+🔵 Q6. Disaster-Proof Database kya hota hai?
+🧠 Simple Definition:
+Yeh aise database hote hain jo kisi bhi system failure, natural disaster ya cyber attack ke baad bhi data ko safe rakhte hain.
 
-**Trick:**  
-Bernoulli = Binary  
-Poisson = Phone calls
+📌 Kaise?
+Backup system — data ka copy banta rahta hai
 
----
+Replication — ek se jyada jagah same data
 
-## 🔹 6. BCH Codes
+Failover — agar ek server down, to dusra ready
 
-**Definition:**  
-BCH is an error-correcting code that fixes multiple-bit errors.
+High availability — system 24/7 chalta rahe
 
-**Example:**  
-Used in CDs, QR codes where small damage still lets us read data.
+✅ Example:
+Bank ke 2 server — ek Mumbai, ek Delhi me.
+Mumbai wala down ho gaya to Delhi ka backup turant kaam shuru karega.
 
-**Trick:**  
-BCH = Big Correction Helper
-
----
-
-## 🔹 7. Generator Matrix for (6,3) Block Code
-
-**Definition:**  
-It’s a matrix used to generate all possible codewords from input data.
-
-**Example:**  
-Input (3-bit) × Generator Matrix = Output (6-bit codeword)
-
-**Trick:**  
-G matrix = Codeword machine
-
----
-
-## 🔹 8. CRC (Cyclic Redundancy Check)
-
-**Definition:**  
-CRC detects data errors using binary division and remainder.
-
-**Steps:**  
-1. Append zeros  
-2. Divide by generator  
-3. Append remainder = transmitted message
-
-**Example:**  
-Used when downloading files or streaming — it checks if data is correct.
-
-**Trick:**  
-CRC = Check Received Content
-
----
-
-## 🔹 9. Diffie-Hellman Key Exchange
-
-**Definition:**  
-Method for two people to generate same secret key over public network.
-
-**Example:**  
-You and friend both get a shared secret without anyone seeing it.
-
-**Trick:**  
-Diffie-Hellman = Digital Handshake
-
----
-
-## 🔹 10. Confusion and Diffusion
-
-**Definition:**  
-- Confusion: Complex relation between key and cipher  
-- Diffusion: Spread out message bits over cipher
-
-**Example:**  
-1-bit change → Entire cipher changes = high confusion & diffusion
-
-**Trick:**  
-Confuse the hacker, Diffuse the message
-
----
-
-## 🔹 11. Soft vs Hard Decoding & Viterbi Algorithm
-
-**Definition:**  
-- Hard decoding: Uses 0/1 directly  
-- Soft decoding: Uses signal confidence  
-- Viterbi: Decoding method for error correction
-
-**Example:**  
-Used in mobile and satellite communications.
-
-**Trick:**  
-Hard = Harsh  
-Soft = Smart  
-Viterbi = Very Best Decoder
-
----
-
-## 🔹 12. Short Notes
-
-### i) Linear Convolutional Code  
-Encodes message using shift registers with memory.  
-Used in space/military communication.
-
-### ii) RSA  
-Public key encryption with 2 keys (public & private).  
-Used in secure websites (https://), digital wallets.
-
-### iii) MDS Code (Maximum Distance Separable)  
-Corrects max errors for given code length.  
-Used in storage (RAID), cloud backup.
-
-### iv) PGP (Pretty Good Privacy)  
-Used in email security. Combines hashing, encryption, digital signature.
-
----
-
-## 🔹 13. Source Coding Theorem
-
-**Definition:**  
-States that average code length ≥ entropy.  
-Ideal code is as short as possible but still lossless.
-
-**Example:**  
-You can’t compress a file smaller than its entropy without losing info.
-
-**Trick:**  
-Source coding = Short but lossless
-
----
-
-## 🔹 14. Symmetric vs Asymmetric Encryption
-
-**Definition:**  
-- Symmetric: Same key for encryption & decryption  
-- Asymmetric: Different public/private keys
-
-**Example:**  
-- ZIP file with password = Symmetric  
-- Online banking = Asymmetric (RSA)
-
-**Trick:**  
-Symmetric = Single key  
-Asymmetric = A pair of keys
-
----
-
-## 🔹 15. AES (Advanced Encryption Standard)
-
-**Definition:**  
-Block cipher encryption used worldwide. Works on 128-bit blocks.
-
-**Example:**  
-Used in WiFi security, government data encryption.
-
-**Trick:**  
-AES = America’s Encryption Standard
-
----
-
-## 🔹 16. Hamming Code
-
-**Definition:**  
-Error-detecting and correcting code using parity bits.
-
-**Example:**  
-Detects & fixes 1-bit errors in data.
-
-**Steps:**  
-1. Add parity bits in 2ⁿ positions  
-2. Use XOR to check
-
-**Trick:**  
-Hamming = Healing errors
-
+🟢 Final Super-Simple Summary Table
+Topic	Short & Sweet Notes
+OODBMS	Object store karta hai, programming jaisa, multimedia me use
+ORDBMS	SQL + thoda object support, bank/logistics ke liye best
+RDBMS vs OODBMS	Table vs Object
+Mobile DB	Phone/tablet me offline kaam, baad me sync hota hai
+Disaster-Proof DB	Backup + failover + safe from any disaster
 
